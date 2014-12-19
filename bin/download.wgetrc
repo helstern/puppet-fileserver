@@ -1,0 +1,149 @@
+# This is WGETRC.
+
+# This file changes the default behavior of Wget.
+# Its default location, when installed in Windows 7, is the "etc"
+# folder (e.g., C:\Program Files (x86)\GnuWin32\etc).
+# The Wget manual lists many possible options for wgetrc.
+
+# Settings here are customized to back up WordPress blogs.
+# Remarks here apply to Wget 1.11.4 in Windows 7.
+
+# Edit this file using Notepad or some other text editor that
+# will not insert hidden characters (e.g., not Microsoft Word).
+
+# Lines in this file preceded by hash marks ("#") are comments.
+# Lines have no effect until those leading hash marks are removed.
+# Option settings begin here.
+
+###########################################
+
+# Include your email address so server admins can contact you.
+header = From: Radu Helstern <radu.helstern@gmail.com>
+
+# Experts recommend that only experts use "robots = off"
+# Command-line equivalent: -e robots=off
+robots = on
+
+# Recursive retrieving can be turned on by default.
+# Command-line equivalent: -r or --recursive
+recursive = on
+
+# Turn on all associated pages needed for proper page display.
+# Command-line equivalent: -p or --page-requisites
+# May be the reason why nothing suppresses twitter.com (below).
+page_requisites = on
+
+# Add an HTML extension for files lacking one.
+# Command-line equivalent: -E or --html-extension
+html_extension = on
+
+# Skip certificate checking
+# Not recommended when transmitting confidential/important data.
+# Command-line equivalent: --no-check-certificate
+# (or --check-certificate to turn on).
+check_certificate = off
+
+# Convert links to refer to local (downloaded) files.
+# Command-line equivalent: -k or --convert-links
+convert_links = on
+
+# Eliminate unnecessary extra folder level for host in download.
+# Command-line equivalent: -nH or --no-host-directories.
+# Turned on here because downloading multiple hosts.
+add_hostdir = on
+
+# Set recursion level (i.e., number of links followed)
+# (e.g., Link 1 leads to Link 2 leads to Link 3).
+# If infinite setting doesn't work, figure out why not.
+# Command-line equivalent: -l n (n = number from 0 to inf).
+# (That's an L, not a one, followed by an n.)
+reclevel = inf
+
+# Wait a certain amount of time between retrievals to avoid
+# irritating server administrators and getting banned.
+# One approach: wait a fixed number of seconds.
+# Command-line equivalent: -w 2 or --wait=2.
+# The wgetrc parameter for that: wait = 2.
+# Another approach: wait a random amount of time.
+# Command-line equivalent: --random-wait.
+random_wait = on
+
+# Control download speed to be considerate and avoid getting banned.
+# Command-line equivalent: --limit-rate=n.
+# n can be e.g., 25000 or 25k (or other numbers).
+limit_rate = 25k
+
+# Verbose mode: tons of information.
+# Command-line equivalent: -v or --verbose, or -nv or --no-verbose
+verbose = off
+
+# Avoid special-case problems with Content-Length headers.
+# Command-line equivalent: --ignore-length
+ignore_length = on
+
+# Disable the use of cookies.
+# Command-line equivalent: --no-cookies
+cookies = off
+
+# Prevent retrieval of material above the specified URLs.
+# Command-line equivalent: -np or --no-parent
+no_parent = on
+
+# Span host servers if needed during recursive retrieval
+# May download irrelevant pages even with domains (below) set.
+# Command-line equivalent: -H or --span-hosts
+span_hosts = off
+
+# Specify where download will be stored.
+# Command-line equivalent: -P or --directory-prefix=
+# Spaces and quotation marks don't seem to work.
+# dir_prefix = /tmp
+
+
+###### DOMAINS AND DIRECTORIES ######
+
+# Each of the following options can be used
+# in most if not all of these ways:
+# - Command line with comma-delimited list
+# - Command line invoking external file
+# - wgetrc entry with comma-delimited list
+# - wgetrc entry invoking external file
+# Comma-delimited list means e.g., input = URL1,URL2,...
+# External file means e.g., input = D:\Folder\InputList.txt
+# with each value on a separate line in the external file.
+# Entries shown below are the ones I used.
+# As noted, I could not exclude e.g., twitter.com. Entries in
+# that folder continued to grow indefinitely. I had to use
+# Ctrl-C or Task Manager to interrupt Wget at some point.
+
+
+# Specify list of URLs to download from.
+# Command-line equivalent: -i or --input-file=
+# followed by list of URLs or name of file listing URLs.
+# input = download.urls.txt
+
+# Specify list of included domains.
+# Command-line equivalent: -D or --domains=
+# domains = IncludeDomains.txt doesn't exclude e.g., twitter.com.
+# Likewise domains = raywoodcockbio.wordpress.com
+
+# Specify list of included directories.
+# Command-line equivalent: -I or --include=
+# include_directories = D:\Folder\IncludeDirectories.txt
+# That option retrieves only one index.html file.
+
+# Specify list of excluded domains
+# Command-line equivalent: --exclude-domains=
+# exclude_domains = ExcludeDomains.txt doesn't exclude e.g., twitter.com.
+# Likewise exclude_domains = twitter.com,www.facebook.com [etc.]
+
+# Specify list of excluded directories
+# Command-line equivalent: -X or --exclude-directories=
+# These directories can make download bulky and redundant.
+# Be sure not to exclude any that you want to back up.
+# exclude_directories = ExcludeDirectories.txt doesn't seem to work.
+# Nothing excludes twitter.com.
+exclude_directories = /tag,/feed,/*/feed,/*/*/*/*/feed,/feeds,/i,/wp-includes,/author,/category,/page,/submit,/wp-content
+
+
+# Download directory options

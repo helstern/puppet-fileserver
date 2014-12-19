@@ -22,6 +22,8 @@ vagrantfile     text
 *.erb    eol=lf
 *.seed.erb eol=lf
 *.conf.erb eol=lf
+*.wgetrc  eol=lf
+*.txt  eol=lf
 Puppetfile eol=lf
 
 # Explicitly declare files that will always have CRLF line endings on checkout.
