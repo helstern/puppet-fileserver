@@ -20,7 +20,7 @@ function wget_download()
 {
     local WGETURL=$1
     local DIRPREFIX="${FILESERVER_ROOT}/${2}"
-    local MESSAGE="${3-$WGETURL}"
+    local MESSAGE="${3-downloading $WGETURL}"
 
     echo -en "${MESSAGE}    "
 
@@ -33,5 +33,6 @@ function wget_download()
     echo " DONE"
 }
 
+# apache maven
 WGETURL=http://www.mirrorservice.org/sites/ftp.apache.org/maven/maven-3/3.2.3/binaries/apache-maven-3.2.3-bin.tar.gz
-wget_download "${WGETURL}" "common" "downloading apache-maven-3.2.3-bin.tar.gz"
+wget_download "${WGETURL}" "common"
