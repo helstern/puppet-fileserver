@@ -79,7 +79,7 @@ verbose = off
 
 # Avoid special-case problems with Content-Length headers.
 # Command-line equivalent: --ignore-length
-ignore_length = on
+ignore_length = off
 
 # Disable the use of cookies.
 # Command-line equivalent: --no-cookies
@@ -144,6 +144,3 @@ span_hosts = off
 # exclude_directories = ExcludeDirectories.txt doesn't seem to work.
 # Nothing excludes twitter.com.
 exclude_directories = /tag,/feed,/*/feed,/*/*/*/*/feed,/feeds,/i,/wp-includes,/author,/category,/page,/submit,/wp-content
-
-
-# Download directory options
