@@ -34,9 +34,9 @@ function wget_download()
 }
 
 # apache maven binary
-WGETURL=http://mirror.gopotato.co.uk/apache/maven/maven-3/3.2.3/binaries/apache-maven-3.2.3-bin.tar.gz
+WGETURL=http://mirror.gopotato.co.uk/apache/maven/maven-3/3.2.5/binaries/apache-maven-3.2.5-bin.tar.gz
 wget_download "${WGETURL}" "modules/maven"
 
 # apache maven source
-WGETURL=http://mirror.gopotato.co.uk/apache/maven/maven-3/3.2.3/source/apache-maven-3.2.3-src.tar.gz
+WGETURL=http://mirror.gopotato.co.uk/apache/maven/maven-3/3.2.5/source/apache-maven-3.2.5-src.tar.gz
 wget_download "${WGETURL}" "modules/maven"
