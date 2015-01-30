@@ -1,6 +1,6 @@
 # ignore all
-*
+.gitignore
 
 # except .gitignore
 !.gitignore
-!sources.txt
+!download.txt

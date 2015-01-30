@@ -1,5 +1,6 @@
 # ignore all
 *
 
-# except .gitignore
+# except .gitignore, download.txt
 !.gitignore
+!download.txt

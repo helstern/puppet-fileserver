@@ -3,6 +3,7 @@
 #set -x 
 
 DIR_BIN=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+DIR_CONF=$( cd "${DIR_BIN}/../conf" && pwd )
 FILESERVER_ROOT=$(cd "${DIR_BIN}/../www" && pwd)
 
 #######################################
@@ -18,24 +19,30 @@ FILESERVER_ROOT=$(cd "${DIR_BIN}/../www" && pwd)
 #######################################
 function wget_download()
 {
-    local WGETURL=$1
-    local DIRPREFIX="${FILESERVER_ROOT}/${2}"
-    local MESSAGE="${3-downloading $WGETURL}"
+    local DIR="${FILESERVER_ROOT}/${1}"
 
+    if [ ! -f "$DIR/download.txt" ] ; then
+        echo "no download.txt list found for ${1}"
+    fi
+
+    local MESSAGE="${2-downloading $1}"
     echo -en "${MESSAGE}    "
 
     wget  --progress=dot:mega \
-        --config="${DIR_BIN}/download.wgetrc" \
-        --no-directories --directory-prefix "${DIRPREFIX}" \
-        ${WGETURL} 2>&1 | grep --line-buffered -o "[0-9]*%" | xargs -L1 echo -en "\b\b\b\b"
+        --config="${DIR_CONF}/download.wgetrc" \
+        --no-directories --directory-prefix "${DIR}" \
+        --input-file="${DIR}/download.txt" \
+        2>&1 | grep --line-buffered -o "[0-9]*%" | xargs -L1 echo -en "\b\b\b\b"
 
-    echo " DONE"
+    echo " ${1} DONE"
 }
 
-# apache maven binary
-WGETURL=http://mirror.gopotato.co.uk/apache/maven/maven-3/3.2.5/binaries/apache-maven-3.2.5-bin.tar.gz
-wget_download "${WGETURL}" "modules/apache_maven"
+# apache_maven
+wget_download "apache_maven"
 
-# apache maven source
-WGETURL=http://mirror.gopotato.co.uk/apache/maven/maven-3/3.2.5/source/apache-maven-3.2.5-src.tar.gz
-wget_download "${WGETURL}" "modules/apache_maven"
+# ruby-install
+wget_download "ruby-install"
+
+# chruby
+wget_download "chruby"
+
