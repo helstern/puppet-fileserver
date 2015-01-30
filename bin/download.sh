@@ -34,7 +34,7 @@ function wget_download()
         --input-file="${DIR}/download.txt" \
         2>&1 | grep --line-buffered -o "[0-9]*%" | xargs -L1 echo -en "\b\b\b\b"
 
-    echo " ${1} DONE"
+    echo " DONE"
 }
 
 # apache_maven
