@@ -32,6 +32,7 @@ function wget_download()
         --config="${DIR_CONF}/download.wgetrc" \
         --no-directories --directory-prefix "${DIR}" \
         --input-file="${DIR}/download.txt" \
+        --no-clobber \
         2>&1 | grep --line-buffered -o "[0-9]*%" | xargs -L1 echo -en "\b\b\b\b"
 
     echo " DONE"
